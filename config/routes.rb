@@ -18,6 +18,21 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  resources :users
+  resources :user_sessions
+
+  get 'login' => 'user_sessions#new', :as => :login
+  post 'logout' => 'user_sessions#destroy', :as => :logout
+
+=begin
+  get 'user_sessions/new'
+
+  get 'user_sessions/create'
+
+  get 'user_sessions/destroy'
+=end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
