@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  skip_before_action :require_login, except: [:destroy]
+  
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
