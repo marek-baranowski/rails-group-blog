@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  enum status: [:pending_approval, :rejected, :contributor, :admin]
+
   authenticates_with_sorcery!
 
   validates :password, length: {minimum: 3}, if: -> { new_record? || changes["password"] }

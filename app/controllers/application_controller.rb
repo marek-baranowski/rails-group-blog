@@ -5,14 +5,36 @@ class ApplicationController < ActionController::Base
   before_action :require_login
 
   private
+
+  def after_failed_login(credentials)
+    puts 'XXXXXXXXXXXXXXXXOOOOOOOOOOOLLLLLLLLLLLLLLLLLLLL'
+  end
+
   def not_authenticated
-    flash[:alert] = 'You have to authenticate to access this page.'
+    flash[:alert] = "You have to authenticate to access this page."
     redirect_back_or_default
+  end
+
+  def admin_only
+    unless current_user.admin?
+      common_access_denial_action
+    end
+  end
+
+  def owns_resource
+    unless current_user.id.to_s == params[:id] || current_user.admin?
+      common_access_denial_action
+    end
   end
 
   def redirect_back_or_default(default = root_url)
     redirect_to :back
   rescue ActionController::RedirectBackError
     redirect_to default
+  end
+
+  def common_access_denial_action
+    flash[:alert] = 'Access denied.'
+    redirect_back_or_default
   end
 end
