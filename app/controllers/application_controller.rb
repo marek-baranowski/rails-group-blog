@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def after_failed_login(credentials)
-    puts 'XXXXXXXXXXXXXXXXOOOOOOOOOOOLLLLLLLLLLLLLLLLLLLL'
-  end
-
   def not_authenticated
     flash[:alert] = "You have to authenticate to access this page."
     redirect_back_or_default

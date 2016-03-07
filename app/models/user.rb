@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  enum status: [:pending_approval, :rejected, :contributor, :admin]
+  enum status: [:contributor, :admin]
 
   authenticates_with_sorcery!
 
