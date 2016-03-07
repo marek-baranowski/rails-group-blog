@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-  <% @users.find_all{|u| u.pending_approval? || u.rejected?}.each do |user| %>
+  <% @users.find_all{|u| u.activation_state == 'pending'}.each do |user| %>
       <tr>
         <td><%= user.email %></td>
         <td><%= user.status %></td>
@@ -39,7 +39,7 @@
   </thead>
 
   <tbody>
-    <% @users.reject{|u| u.pending_approval? || u.rejected?}.each do |user| %>
+    <% @users.find_all{|u| u.activation_state == 'active'}.each do |user| %>
       <tr>
         <td><%= user.email %></td>
         <td><%= user.status %></td>
