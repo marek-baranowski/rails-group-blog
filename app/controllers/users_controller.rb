@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :activate]
   before_action :admin_only, only: [:destroy]
   before_action :owns_resource, only: [:show, :edit, :update]
   skip_before_action :require_login, only: [:new, :create, :show]
@@ -59,6 +59,14 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def activate
+    @user.activate!
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully activated.' }
       format.json { head :no_content }
     end
   end

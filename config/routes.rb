@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users
+  resources :users do
+    member do
+      get :activate
+    end
+  end
   resources :user_sessions
 
   get 'login' => 'user_sessions#new', :as => :login
