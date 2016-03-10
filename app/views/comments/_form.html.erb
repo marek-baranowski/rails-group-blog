@@ -1,18 +1,18 @@
 <%= form_for([@article, @article.comments.build]) do |f| %>
-      <div class="row control-group">
-        <div class="form-group col-xs-12 floating-label-form-group controls">
-          <%= f.text_field :commenter, class: 'form-control', placeholder: 'name' %>
-        </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls">
+        <%= f.text_field :commenter, class: 'form-control', placeholder: 'name' %>
       </div>
-      <div class="row control-group">
-        <div class="form-group col-xs-12 floating-label-form-group controls floating-label-form-group-with-value">
-          <%= f.text_area :body, class: 'form-control', placeholder: 'Message', rows: '5' %>
-        </div>
+    </div>
+    <div class="row control-group">
+      <div class="form-group col-xs-12 floating-label-form-group controls floating-label-form-group-with-value">
+        <%= f.text_area :body, class: 'form-control', placeholder: 'Message', rows: '5' %>
       </div>
-      <br>
-      <div class="row">
-        <div class="form-group col-xs-12">
-          <%= f.submit class: 'btn btn-default'%>
-        </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="form-group col-xs-12">
+        <%= f.submit class: 'btn btn-default' %>
       </div>
+    </div>
 <% end %>
