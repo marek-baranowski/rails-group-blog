@@ -15,4 +15,3 @@ After registration, account must be approved by other registered users. To activ
 For example for account with login admin@admin.com:
 
     rake users:set_admin[admin@admin.com]
-    
